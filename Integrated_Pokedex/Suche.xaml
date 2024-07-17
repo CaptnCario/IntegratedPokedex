@@ -1,0 +1,127 @@
+﻿<Window x:Class="Integrated_Pokedex.Suche"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Integrated_Pokedex"
+        mc:Ignorable="d"
+        Title="Suche" Height="700" Width="500" >
+    <Grid>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Background_Images/SuchenDex.png" />
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width=".5*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Foreground="White" Grid.Row="0" Grid.Column="1" FontWeight="Bold" TextAlignment="Center" FontSize="20px">Listen Modus für den <LineBreak/> Pokedex auswählen</TextBlock>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+
+            <CheckBox x:Name="checkName" IsEnabled="False" Margin="0,5"/>
+            <StackPanel Margin="0,-20">
+                <TextBlock TextAlignment="Center" ToolTip="Bitte füge hier einen Text ein über ein Pokemon das du suchst">Name</TextBlock>
+                <TextBox  TextChanged="txtName_TextChanged" x:Name="txtName" Width="230" ToolTip="Bitte füge hier einen Text ein über ein Pokemon das du suchst"/>
+            </StackPanel>
+
+
+
+            <CheckBox x:Name="checkTypen" Margin="0,30" IsEnabled="False"></CheckBox>
+            <WrapPanel Margin="0,-50" ToolTip="Hier kannst du den Typen auswählen, von dem gesuchten Pokemon">
+                <TextBlock Width="230" TextAlignment="Center">Typ</TextBlock>
+                <RadioButton x:Name="boxNormal"  GroupName="typenWahl" Checked="TypChecker" Margin="5">Normal</RadioButton>
+                <RadioButton x:Name="boxPflanze" GroupName="typenWahl" Checked="TypChecker" Margin="5" >Pflanze</RadioButton>
+                <RadioButton x:Name="boxFeuer"   GroupName="typenWahl" Checked="TypChecker" Margin="5">Feuer</RadioButton>
+                <RadioButton x:Name="boxElektro" GroupName="typenWahl" Checked="TypChecker" Margin="5">Elektro</RadioButton>
+                <RadioButton x:Name="boxKampf"   GroupName="typenWahl" Checked="TypChecker" Margin="5">Kampf</RadioButton>
+                <RadioButton x:Name="boxFlug"    GroupName="typenWahl" Checked="TypChecker" Margin="5">Flug</RadioButton>
+                <RadioButton x:Name="boxGift"    GroupName="typenWahl" Checked="TypChecker" Margin="5">Gift</RadioButton>
+                <RadioButton x:Name="boxBoden"   GroupName="typenWahl" Checked="TypChecker" Margin="5">Boden</RadioButton>
+                <RadioButton x:Name="boxGestein" GroupName="typenWahl" Checked="TypChecker" Margin="5">Gestein</RadioButton>
+                <RadioButton x:Name="boxKäfer"   GroupName="typenWahl" Checked="TypChecker" Margin="5">Käfer</RadioButton>
+                <RadioButton x:Name="boxEis"     GroupName="typenWahl" Checked="TypChecker" Margin="5">Eis</RadioButton>
+                <RadioButton x:Name="boxFee"     GroupName="typenWahl" Checked="TypChecker" Margin="5">Fee</RadioButton>
+                <RadioButton x:Name="boxPsycho"  GroupName="typenWahl" Checked="TypChecker" Margin="5">Psycho</RadioButton>
+                <RadioButton x:Name="boxGeist"   GroupName="typenWahl" Checked="TypChecker" Margin="5">Geist</RadioButton>
+                <RadioButton x:Name="boxDrache"  GroupName="typenWahl" Checked="TypChecker" Margin="5">Drache</RadioButton>
+                <RadioButton x:Name="boxUnlicht" GroupName="typenWahl" Checked="TypChecker" Margin="5">Unlicht</RadioButton>
+                <RadioButton x:Name="boxStahl"   GroupName="typenWahl" Checked="TypChecker" Margin="5">Stahl</RadioButton>
+                <RadioButton x:Name="boxWasser"  GroupName="typenWahl" Checked="TypChecker" Margin="5">Wasser</RadioButton>
+            </WrapPanel>
+            <CheckBox x:Name="checkSilhouette" Margin="0,80" IsEnabled="False"/>
+            <WrapPanel Margin="0,-80" ToolTip="Hier kannst du eine Silhouette auswählen des zu findenen Pokémon">
+                <TextBlock Width="230" TextAlignment="Center" ><Run Text="Silhouette"/></TextBlock>
+                <RadioButton x:Name="sil1" GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_1.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil2" GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_2.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil3"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_3.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil4"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_4.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil5"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_5.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil6"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_6.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil7"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_7.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil8"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_8.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil9"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_9.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil10"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_10.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil11"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_11.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil12"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_12.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil13"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image Width="20px" Source="/Images/Silhouette/Silhouette_13.png" />
+                </RadioButton>
+                <RadioButton x:Name="sil14"  GroupName="silWahl" Margin="5" Checked="SilChecker">
+                    <Image  Width="20px" Source="/Images/Silhouette/Silhouette_14.png" />
+                </RadioButton>
+            </WrapPanel>
+
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,15,5,5">
+            <Button FontFamily="Rubik" Background="DeepSkyBlue" Foreground="White" FontSize="20px" Name="btnSearch" Click="btnSearch_Click" ToolTip="Wurden die Filter ausgewählt so aktiviert dieser Button diese">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources> SUCHEN</Button>
+            <Button FontFamily="Rubik" Background="LightGreen" Foreground="Black" Margin="0,10,0,0" Name="btnRestore" Click="btnRestore_Click" IsCancel="True" ToolTip="Dieser Button setzt die Filter automatisch zurück">Zurücksetzten
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="Integrated_Pokedex.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Integrated_Pokedex"
+        mc:Ignorable="d"
+        Title="Pokédex" Height="700" Width="413" MinWidth="413" MinHeight="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Background_Images/startscreen.png" />
+        </Grid.Background>
+
+        <!--Spalte 1 Links-->
+        <StackPanel Margin="0,40,0,0" Grid.Row="1" HorizontalAlignment="Center" Width="95">
+            <Button Margin="0,10,0,0" Padding="3" Name="Kanto_Dex" Click="Kanto_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Kanto Region">_Kanto Pokédex</Button>
+            <Button Margin="0,20,0,0" Padding="3" Name="Hoenn_Dex" Click="Hoenn_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Hoenn Region">_Hoenn Pokédex</Button>
+            <Button Margin="0,20,0,0" Padding="3" Name="Einall_Dex" Click="Einall_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Einall Region">_Einall Pokédex</Button>
+            <Button Margin="0,20,0,0" Padding="3" Name="Alola_Dex" Click="Alola_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Alola Region">_Alola Pokédex</Button>
+            <Button Margin="0,20,0,0" Padding="3" Name="Paldea_Dex" Click="Paldea_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Paldea Region">_Paldea Pokédex</Button>
+        </StackPanel>
+
+        <!--Spalte 2 Mitte-->
+        <StackPanel Margin="0,10,0,10" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Width="100">
+            <Button Padding="3" Name="National_Dex"  Click="National_Dex_Click"  Background="DarkGray" ToolTip="Öffne den Nationalen Pokedex">_National Pokédex</Button>
+        </StackPanel>
+
+        <!--Spalte 3 Rechts-->
+        <StackPanel Margin="0,40,0,0"  Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" Width="95" >
+            <Button Margin="0,10,0,0"  Padding="3" Name="Jotho_Dex"  Click="Jotho_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Jotho Region">_Jotho Pokédex</Button>
+            <Button Margin="0,20,0,0"  Padding="3" Name="Sinnoh_Dex" Click="Sinnoh_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Sinnoh Region">_Sinnoh Pokédex</Button>
+            <Button Margin="0,20,0,0"  Padding="3" Name="Kalos_Dex" Click="Kalos_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Kalos Region">_Kalos Pokédex</Button>
+            <Button Margin="0,20,0,0"  Padding="3" Name="Galar_Dex" Click="Galar_Dex_Click" Background="DarkGray" ToolTip="Öffne den Pokémondex der Galar Region">_Galar Pokédex</Button>
+        </StackPanel>
+        
+        <!--AKTUELL Muss ebenfalls noch ein Fontstyle ausgesucht werden, das ist jedoch bisher nicht so wichtig-->
+    </Grid>
+</Window>

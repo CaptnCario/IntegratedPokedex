@@ -1,0 +1,167 @@
+﻿<Window x:Class="Integrated_Pokedex.InsideDex"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Integrated_Pokedex"
+        mc:Ignorable="d"
+        Title="InsideDex" Height="700" Width="520" MinHeight="700" MinWidth="500">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Background_Images/insideDex.png" />
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55*"/>
+            <!-- Zeile 0-->
+            <RowDefinition Height="208*"/>
+            <!-- Zeile 1-->
+            <RowDefinition Height="55*"/>
+            <!-- Zeile 2-->
+            <RowDefinition Height="23*"/>
+            <!-- Zeile 3-->
+            <RowDefinition Height="343*"/>
+            <!-- Zeile 4-->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="36*"/>
+            <!-- Spalte 0-->
+            <ColumnDefinition Width="190*"/>
+            <!-- Spalte 1-->
+            <ColumnDefinition Width="31*"/>
+            <!-- Spalte 2-->
+            <ColumnDefinition Width="34*"/>
+            <!-- Spalte 3-->
+            <ColumnDefinition Width="209*"/>
+            <!-- Spalte 4-->
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="1" Margin="0,3,0,22" Source="/Images/Images/Dex_Anzeige.png" />
+        <TextBlock Name="txtDexÜberschrift" TextAlignment="Center" FontFamily="Pixel LCD7" Foreground="White" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="12" Width="118" Margin="0,12,0,0" ToolTip="Das zeigt den Pokédex der aktuellen Region">[POKEDEX-NAME]</TextBlock>
+
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="130" x:Name="pkmnBild" Source="https://media.bisafans.de/6990e67//pokemon/artwork/162.png" Width="130" ToolTip="Das Pokemon was du gerade ausgewählt hast"/>
+
+        <StackPanel Grid.Column="4" Margin="0,3,0,0" Grid.Row="1" >
+
+            <Border CornerRadius="7" Margin="20,-1,0,5" Background="#6B6936" Width="2013" >
+                <TextBlock  FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2" Name="txtLineM3">[ID POKEMON NAME - 3]</TextBlock>
+            </Border>
+
+            <Border CornerRadius="7" Margin="15,5,0,5" Background="#A8A538" Width="2216" >
+                <TextBlock FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2" Name="txtLineM2">[ID POKEMON NAME - 2]</TextBlock>
+            </Border>
+
+            <Border CornerRadius="7" Margin="10,5,0,5" Background="#D9D21A" Width="2216">
+                <TextBlock FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2"  Name="txtLineM1">[ID POKEMON NAME - 1]</TextBlock>
+            </Border>
+
+            <Border  CornerRadius="7" Margin="5,5,0,5" Background="Yellow" Width="2223">
+                <TextBlock FontSize="15px" FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2" Name="txtLineIndex" >[ID POKEMON NAME]</TextBlock>
+            </Border>
+
+            <Border CornerRadius="7" Margin="10,5,0,5" Background="#D9D21A" Width="2216">
+                <TextBlock FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2"  Padding="2" Name="txtLineP1">[ID POKEMON NAME + 1]</TextBlock>
+            </Border>
+
+            <Border CornerRadius="7"  Margin="15,5,0,5" Background="#A8A538" Width="2216">
+                <TextBlock FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2" Name="txtLineP2">[ID POKEMON NAME + 2]</TextBlock>
+            </Border>
+
+            <Border CornerRadius="7"  Margin="20,5,0,0" Background="#6B6936" Width="2216">
+                <TextBlock FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2" Name="txtLineP3">[ID POKEMON NAME + 3]</TextBlock>
+            </Border>
+
+        </StackPanel>
+
+        <TextBlock Margin="5,0,0,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Orev" VerticalAlignment="Center" FontSize="16" Height="17">Hier hast du die Möglichkeit, ein Pokemon zu Suchen, oder es anzusehen</TextBlock>
+
+        <Image Grid.Column="4" Grid.Row="4" Source="/Images/Icons/pokeball.png" Margin="40,2,-132,0" />
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,2,0,0">
+            <Button Cursor="Hand" Margin="0,10,0,0" Height="50"  Background="#339130" Foreground="White" Name="dexSuche" Click="dexSuche_Click" ToolTip="Öffne die Pokémon Suche, um nach Pokemon zu filtern">
+                <WrapPanel>
+                    <TextBlock FontSize="20" FontFamily="Orev" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
+                    Im Pokédex Suchen
+                    </TextBlock>
+                    <Image HorizontalAlignment="Right" Opacity=".8" Width="40px" Source="/Images/Icons/suche.png"/>
+                </WrapPanel>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Cursor="Hand" Margin="0,15,0,0" FontSize="20" Height="50"  Background="#56BDBB" Foreground="White" IsCancel="True" ToolTip="Wechseln Sie zu einem anderen Pokédex">
+                <WrapPanel>
+                    <TextBlock FontSize="20px" FontFamily="Orev" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
+                    Pokédex wechseln
+                    </TextBlock>
+                    <Image HorizontalAlignment="Right" Opacity=".8" Width="40px"  Source="/Images/Icons/Move_down.png" />
+
+                </WrapPanel>
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Cursor="Hand" Margin="0,15,0,0" FontSize="20" Height="150" Background="#339130" Foreground="White" Name="dexAnsehen" Click="dexAnsehen_Click" ToolTip="Schauen Sie sich die genauen Informationen zu dem Pokemon an">
+                <StackPanel>
+                    <TextBlock  FontSize="28px" FontFamily="Orev" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
+                    Im Pokédex ansehen
+                    </TextBlock>
+                    <Image HorizontalAlignment="Center" Opacity=".8" Width="80px"  Source="/Images/Icons/Buch.png" />
+
+                </StackPanel>
+
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+
+        <!--Jetzt kommen die Buttons für das Bewegen-->
+        <StackPanel Grid.Row="4" Grid.Column="2" Margin="20,2,0,0" Grid.ColumnSpan="2">
+            <Button Cursor="Hand" Margin="0,50,0,0" Height="45" FontSize="30" FontWeight="Bold" Background="LightBlue" Foreground="DarkBlue" Name="gOben"  Click="gOben_Click" ToolTip="Gehen Sie zu dem ersten Eintrag des Pokédexes">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Image Height="30px" Source="/Images/Icons/gOben.png" />
+            </Button>
+            <Button Cursor="Hand" Margin="0,15,0,0" Height="45" FontSize="30" FontWeight="Bold" Background="LightBlue" Foreground="DarkBlue" Name="kOben"  Click="kOben_Click" ToolTip="Gehen Sie einen Eintrag zurück">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Image Height="25px" Source="/Images/Icons/kOben.png" />
+            </Button>
+            <Button Cursor="Hand" Margin="0,15,0,0" Height="45" FontSize="30" FontWeight="Bold" Background="LightBlue" Foreground="DarkBlue" Name="kUnten" Click="kUnten_Click" ToolTip="Gehen Sie einen Eintrag vor">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Image Height="25px" Source="/Images/Icons/kUnten.png" />
+            </Button>
+            <Button Cursor="Hand" Margin="0,15,0,0" Height="45" FontSize="30" FontWeight="Bold" Background="LightBlue" Foreground="DarkBlue" Name="gUnten" Click="gUnten_Click" ToolTip="Gehen Sie zu dem letzten Eintrag des Pokédexes">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="30"/>
+                    </Style>
+                </Button.Resources>
+                <Image Height="30px" Source="/Images/Icons/GUnten.png" />
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

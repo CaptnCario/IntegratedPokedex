@@ -1,0 +1,357 @@
+﻿<Window x:Class="Integrated_Pokedex.SelectedPokemon0"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Integrated_Pokedex"
+        mc:Ignorable="d"
+        Title="SelectedPokemon" Height="725" Width="500" MinHeight="725" MinWidth="500" Closing="Window_Closing">
+    <Grid Name="pkInsideDex">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Für Eintrag-->
+        <Grid.Background>
+            <ImageBrush x:Name="imgBackground" ImageSource="/Images/Background_Images/showEntry4.png"/>
+        </Grid.Background>
+
+        <!-- Für Gewicht
+        <Grid.Background>
+            <ImageBrush x:Name="imgBackground" ImageSource="/Images/Background_Images/weightDex.png" />
+        </Grid.Background>-->
+
+
+        <!--Für Größe
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Background_Images/GroesseDex.png" />
+        </Grid.Background>-->
+
+        <!--Für Ruf
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Background_Images/SoundDex.png"/>
+        </Grid.Background>-->
+
+        <!--Noch nicht fertig noch nicht so wichtig-->
+        <TabControl Grid.Row="0" Background="Transparent" Grid.RowSpan="3" Name="changeMode" TabStripPlacement="Bottom" SelectionChanged="changeMode_SelectionChanged">
+
+
+            <TabItem Height="40" Margin="-3,-231,3,231" Name="entEintrag" Width="54" Background="LightBlue" ToolTip="Eintrag und Details des Pokémon">
+                <TabItem.Header>
+                    <Image Width="40px" Source="/Images/Icons/eintrag.png" />
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".12*"/>
+                        <RowDefinition Height=".45*"/>
+                        <RowDefinition Height=".25*"/>
+                        <RowDefinition Height=".3*"/>
+                        <RowDefinition Height=".4*"/>
+                        <RowDefinition Height=".3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10.5*"/>
+                        <ColumnDefinition Width=".7*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Image Name="pkMainPic"  Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="120" Margin="0,53,0,0" Source="https://media.bisafans.de/6990e67//pokemon/artwork/393.png" Width="120" ToolTip="Das aktuelle Pokémon"/>
+
+                    <StackPanel Grid.Row="1" Grid.Column="3" Margin="0,1,0,0">
+                        <TextBlock HorizontalAlignment="Center" Name="txtPkmnID"  Margin="0,18" FontFamily="Rubik" FontSize="20px" FontWeight="Bold" ToolTip="Die Pokédex ID des aktuellen Pokémon">[PKMNID]</TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="5" Margin="0,3,0,0">
+                        <TextBlock FontFamily="Rubik" FontWeight="Bold" FontSize="18" Margin="10,16,0,0" Name="txtDePokemonName" ToolTip="Der Deutsche Name des aktuellen Pokémon">[DE-POKEMON NAME]</TextBlock>
+                        <TextBlock FontFamily="Rubik" FontWeight="Bold" FontSize="18" Margin="10,7,0,0"  Name="txtEnPokemonName" ToolTip="Der Englische Name des aktuellen Pokémon">[EN-POKEMON NAME]</TextBlock>
+                        <TextBlock FontFamily="Rubik" FontWeight="Bold" FontSize="18" Margin="35,7"      Name="txtPkBezeichnung" Width="189" ToolTip="Die Form bzw. Bezeichnung des aktuellen Pokémon">[POKEMON-BEZEICHNUNG]</TextBlock>
+                    </StackPanel>
+
+                    <Image Name="Typ1" Grid.Row="2" Grid.Column="7" Margin="0,10,0,0" VerticalAlignment="Top"  Source="/Images/Typen Bilder/Pflanze.png" ToolTip="Der Typ des aktuellen Pokémon"/>
+                    <Image Name="Typ2" Grid.Row="2" Grid.Column="7" Margin="0,0,0,10" VerticalAlignment="Bottom" Source="/Images/Typen Bilder/Pflanze.png" ToolTip="Der 2.Typ des aktuellen Pokémon"/>
+
+
+                    <Image Name="pkSilhouette" Grid.Row="2" Grid.Column="6" Margin="7,0,7,10" Source="/Images/Silhouette/Silhouette_1.png" ToolTip="Die Silhouette des aktuellen Pokémon"/>
+
+                    <StackPanel Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" Margin="5,-3,0,10">
+                        <TextBlock FontFamily="Rubik" FontSize="15px" Margin="3,7" Name="txtPkGroesse" ToolTip="Die Größe des aktuellen Pokémon">[POKEMON GRÖßE]</TextBlock>
+                        <TextBlock FontFamily="Rubik" FontSize="15px" Margin="3,8" Name="txtPkGewicht" ToolTip="Das Gewicht des aktuellen Pokémon">[POKEMON GEWICHT]</TextBlock>
+                    </StackPanel>
+
+                    <TextBlock FontFamily="Rubik" TextAlignment="Center" TextWrapping="Wrap" Name="txtPkEintrag" FontSize="15" Grid.Row="4" Grid.ColumnSpan="9" Margin="22,5,30,0" Grid.RowSpan="2" ToolTip="Die Pokédex Eintrag des aktuellen Pokémon">[POKEDEX EINTRAG]</TextBlock>
+
+                    <Button Cursor="Hand" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,25,0,10" HorizontalAlignment="Left" Background="DeepPink" Foreground="White" IsCancel="True" FontWeight="Bold" Click="btCancel_Click" Width="43" ToolTip="Zurück">
+                        <Image Source="/Images/Icons/Zurück.png" />
+
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+
+                    <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="7" Margin="80,50,0,0" HorizontalAlignment="Left" Grid.RowSpan="2" Width="360">
+
+                        <Button Cursor="Hand"  Name="einOben"  Click="einOben_Click"  VerticalAlignment="Center" Margin="5,60" Width="350" FontSize="25" FontWeight="Bold" Background="DodgerBlue" Foreground="White">
+                            <WrapPanel>
+                                <TextBlock>
+                                  Ein Eintrag nach Oben
+                                </TextBlock>
+                                <Image Margin="20,0,0,0" Height="20px" Source="/Images/Icons/kOben.png" />
+                            </WrapPanel>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button Cursor="Hand"  Name="einUnten" Click="einUnten_Click" Margin="5" Width="350" FontSize="25" FontWeight="Bold" Background="DodgerBlue" Foreground="White">
+                            <WrapPanel>
+                                <TextBlock>
+                                    Ein Eintrag nach Unten
+                                </TextBlock>
+                                <Image Margin="20,0,0,0" Height="20px" Source="/Images/Icons/kUnten.png" />
+                            </WrapPanel>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                    </StackPanel>
+                </Grid>
+
+            </TabItem>
+            <TabItem Height="40" Margin="-58,-191,0,191" Width="55" Name="entGewicht" HorizontalAlignment="Left" Background="LightBlue" ToolTip="Gewicht des Pokemon">
+                <TabItem.Header>
+                    <Image Width="40px" Source="/Images/Icons/gewicht.png" />
+
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42*"/>
+                        <RowDefinition Height="47*"/>
+                        <RowDefinition Height="14*"/>
+                        <RowDefinition Height="130*"/>
+                        <RowDefinition Height="34*"/>
+                        <RowDefinition Height="59*"/>
+                        <RowDefinition Height="93*"/>
+                        <RowDefinition Height="162*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="55*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="99*"/>
+                        <ColumnDefinition Width="62*"/>
+                        <ColumnDefinition Width="98*"/>
+                        <ColumnDefinition Width="32*"/>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock FontFamily="Rubik" Name="txtWightPokemonName" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold" FontSize="25" Height="33" Width="240" Margin="0,13,0,0" ToolTip="Der Name des aktuellen Pokémon">[POKEMON NAME]</TextBlock>
+
+                    <Image Name="pkWeightMainPic" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Width="60px"  HorizontalAlignment="Left" Source="https://www.pokewiki.de/images/0/00/Hauptartwork_393.png" Margin="17,14,0,0" ToolTip="Das aktuelle Pokémon"/>
+                    <Image Name="Tony"            Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="2" Width="100px" HorizontalAlignment="Center" Source="/Images/Images/Tony_sprite.png" Margin="0,14,0,0" Grid.RowSpan="2" ToolTip="Ein Mensch wie du und ich" />
+
+                    <TextBlock FontFamily="Rubik" Grid.Row="5" Grid.ColumnSpan="5" Name="txtPokemonWeight" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="20px" Height="23" Width="198" TextAlignment="Center" ToolTip="Das Gewicht des aktuellen Pokémon">[GEWICHT POKEMON]</TextBlock>
+                    <TextBlock FontFamily="Rubik" Grid.Row="5" Grid.Column="5"  Grid.ColumnSpan="3"        HorizontalAlignment="Center" VerticalAlignment="Top"    FontSize="20px" Height="24" Margin="0,35,0,0" Width="47" ToolTip="Das durchschnitts Gewicht eines normalen Menschen">80kg</TextBlock>
+
+                    <Button Cursor="Hand"  Grid.Row="6" Grid.Column="0" Margin="5,55,0,2" HorizontalAlignment="Left" Background="DeepPink" Foreground="White" IsCancel="True" FontWeight="Bold" Click="btCancel_Click" Width="43" ToolTip="Zurück">
+                        <Image Source="/Images/Icons/Zurück.png" />
+
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+
+                    <StackPanel Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="7" Margin="5,80,0,0" HorizontalAlignment="Left" Grid.RowSpan="4" Width="360">
+
+                        <Button Cursor="Hand"  Name="einWeightOben"  Click="einOben_Click"  VerticalAlignment="Center" Margin="5,60" Width="350" FontSize="25" FontWeight="Bold" Background="DodgerBlue" Foreground="White">
+                            <WrapPanel>
+                                <TextBlock>
+                                  Ein Eintrag nach Oben
+                                </TextBlock>
+                                <Image Margin="20,0,0,0" Height="20px" Source="/Images/Icons/kOben.png" />
+                            </WrapPanel>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button Cursor="Hand"  Name="einWeightUnten" Click="einUnten_Click" Margin="5" Width="350" FontSize="25" FontWeight="Bold" Background="DodgerBlue" Foreground="White">
+                            <WrapPanel>
+                                <TextBlock>
+                                    Ein Eintrag nach Unten
+                                </TextBlock>
+                                <Image Margin="20,0,0,0" Height="20px" Source="/Images/Icons/kUnten.png" />
+                            </WrapPanel>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Height="40" Margin="-116,-151,116,151" Width="55" Name="entGroesse" Background="LightBlue" ToolTip="Größe des Pokémon">
+                <TabItem.Header>
+                    <Image Width="40px" Source="/Images/Icons/groesse.png" />
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="37*"/>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="152*"/>
+                        <RowDefinition Height="29*"/>
+                        <RowDefinition Height="105*"/>
+                        <RowDefinition Height="52*"/>
+                        <RowDefinition Height="238*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Name="txtSizePokemonName" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="25" Height="33" Width="227" Margin="51,0,0,0" ToolTip="Der Name des aktuellen Pokémon">[POKEMON NAME]</TextBlock>
+
+                    <Image Name="pkSizeMainPic" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Width="20px" VerticalAlignment="Bottom"  HorizontalAlignment="Center" Source="https://www.pokewiki.de/images/0/00/Hauptartwork_393.png" ToolTip="Das aktuelle Pokémon"/>
+                    <Image Name="TonySize"      Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Width="65px"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Source="/Images/Images/Tony_Full.png" ToolTip="Ein Mensch(Wow noch einer)"/>
+
+
+                    <TextBlock FontFamily="Rubik" FontSize="17px" TextAlignment="Center" Grid.Row="5" Name="txtSizePokemon" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.ColumnSpan="3" Height="25" Width="153"  Margin="61,0,0,0" ToolTip="Die Größe des aktuellen Pokémon">[GRÖßE POKEMON]</TextBlock>
+                    <TextBlock FontFamily="Rubik" FontSize="17px" TextAlignment="Center" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" x:Name="txtSizeHuman"   HorizontalAlignment="Left" VerticalAlignment="Center" Height="25" Width="151" Margin="34,0,0,0" ToolTip="Die durchschnittliche Größe eines Menschen">Mensch:  1.70m</TextBlock>
+
+                    <Button Cursor="Hand"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,10,0,6.5" HorizontalAlignment="Left" Background="DeepPink" Foreground="White" IsCancel="True" FontWeight="Bold" Click="btCancel_Click" Width="43" ToolTip="Zurück">
+                        <Image Source="/Images/Icons/Zurück.png" />
+
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <StackPanel Grid.Row="6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="5" Margin="-14,38,0,0" HorizontalAlignment="Center" Width="360">
+                        <Button Cursor="Hand" Name="einSizeOben"  Click="einOben_Click"  VerticalAlignment="Center" Margin="5,60" Width="350" FontSize="25" FontWeight="Bold" Background="DodgerBlue" Foreground="White">
+                            <WrapPanel>
+                                <TextBlock>
+                                    Ein Eintrag nach Oben
+                                </TextBlock>
+                                <Image Margin="20,0,0,0" Height="20px" Source="/Images/Icons/kOben.png" />
+                            </WrapPanel>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button Cursor="Hand" Name="einSizeUnten" Click="einUnten_Click" Margin="5" Width="350" FontSize="25" FontWeight="Bold" Background="DodgerBlue" Foreground="White">
+                            <WrapPanel>
+                                <TextBlock>
+                                    Ein Eintrag nach Unten
+                                </TextBlock>
+                                <Image Margin="20,0,0,0" Height="20px" Source="/Images/Icons/kUnten.png" />
+                            </WrapPanel>
+
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="8"/>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+            </TabItem>
+            <TabItem Height="40" Margin="-171,-111,171,111" Width="55" Name="entRuf" Background="LightBlue" ToolTip="Ruf des Pokémon">
+                <TabItem.Header>
+                    <Image Source="/Images/Icons/sound.png" />
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="42*"/>
+                        <RowDefinition Height="46*"/>
+                        <RowDefinition Height="21*"/>
+                        <RowDefinition Height="208*"/>
+                        <RowDefinition Height="18*"/>
+                        <RowDefinition Height="52*"/>
+                        <RowDefinition Height="159*"/>
+                        <RowDefinition Height="34*"/>
+                        <RowDefinition Height="82*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="59*"/>
+                        <ColumnDefinition Width="92*"/>
+                        <ColumnDefinition Width="109*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="95*"/>
+                        <ColumnDefinition Width="56*"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Name="txtSoundPokemonName" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Padding="5,12,0,0" FontWeight="Bold" FontSize="20" Height="45" Width="192" ToolTip="Der Name des aktuellen Pokemon">[POKEMON NAME]</TextBlock>
+
+                    <Image Name="pkSoundMainPic" Margin="0,15,0,0" Grid.Row="3" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Source="https://www.pokewiki.de/images/0/00/Hauptartwork_393.png" Height="196" Width="130" ToolTip="Das aktuelle Pokémon"/>
+
+                    <Button Cursor="Hand" Grid.Row="5" Grid.Column="0" Margin="5,46,0,128" HorizontalAlignment="Left" Background="DeepPink" Foreground="White" IsCancel="True" FontWeight="Bold" Click="btCancel_Click" Width="43" Grid.RowSpan="2" ToolTip="Zurück">
+                        <Image Source="/Images/Icons/Zurück.png" />
+
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+
+                    <Button Margin="104,15,0,62" Cursor="Hand" Name="SoundButton" Grid.Row="7" Grid.RowSpan="2" Grid.Column="2" Background="Transparent" Click="soundButton_Click" Grid.ColumnSpan="2" ToolTip="Dieser Button spielt den Ruf des aktuellen Pokémon">
+                        <Image Source="/Images/Images/Play_arrow.png" />
+
+                    </Button>
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
