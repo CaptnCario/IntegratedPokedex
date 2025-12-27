@@ -1,19 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Security.Cryptography.X509Certificates;
+using System.IO;
+using System.Data.SQLite;
 
 namespace Integrated_Pokedex
 {
@@ -777,70 +771,35 @@ namespace Integrated_Pokedex
 
         static void pkDatabase(string eingabe,ref string ausgabe, ref Dictionary<int,string> pokemonListe, ref Dictionary<int,string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchMode, ref Dictionary<int, string> searchBilder, ref int begrenzer)
         {
-
-            //Define Database
-            //Define Database
-            string dbName = "Pokedex";
-
+            string databasePath = @"..\..\Database\Baum.db";
+            
             //create connection string
-            string connectionString = @"Data Source=DOORTODARKNESS\SQLEXPRESS;" +
-                "Trusted_Connection = yes;" +
-                $"database={dbName};" +
-                "connection timeout=10";
+            string connectionString = "Data Source="+databasePath+";Version=3;";
+            
             do
             {
-                //Query
-                string inputQuery = eingabe;
-
                 //Connect to SQL Server
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+                using (SQLiteConnection sqLiteConnection = new SQLiteConnection(connectionString))
                 {
+                    //Open SQL connection
+                    sqLiteConnection.Open();
+
+
                     //Init SQL Command
-                    using (SqlCommand sqlCommand = new SqlCommand(inputQuery, sqlConnection))
+                    using (SQLiteCommand sqLiteCommand = new SQLiteCommand(eingabe,sqLiteConnection))
                     {
-                        try
+                        //Execute Query
+                        using (var reader = sqLiteCommand.ExecuteReader())
                         {
-                            //Open SQL connection
-                            sqlCommand.Connection.Open();
-
-                            //Execute Query
-                            using (SqlDataReader reader = sqlCommand.ExecuteReader())
-                            {
-                                //Read Data
-                                writeSQLOutput(reader,ref eingabe, ref ausgabe, ref pokemonListe, ref pkBilderListe, ref searchListe, searchMode, ref searchBilder,ref begrenzer);
-
-                            }
+                            //Read Data
+                            writeSQLOutput(reader, ref eingabe, ref ausgabe, ref pokemonListe, ref pkBilderListe, ref searchListe, searchMode, ref searchBilder, ref begrenzer);
                         }
-                        catch (SqlException ex)
-                        {
-                            //Init Stringbuilder
-                            StringBuilder errorMessages = new StringBuilder();
-
-                            //create error string
-                            for (int i = 0; i < ex.Errors.Count; i++)
-                            {
-                                errorMessages.Append("Index #" + i + "\n" +
-                                    "Message: " + ex.Errors[i].Message + "\n" +
-                                    "LineNumber: " + ex.Errors[i].Source + "\n" +
-                                    "Source: " + ex.Errors[i].Source + "\n" +
-                                    "Procedure: " + ex.Errors[i].Procedure + "\n");
-                            }
-
-                            Console.WriteLine(errorMessages.ToString());
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Exception: " + ex.Message);
-                        }
-
                     }
-
                 }
-
             } while (false); //Muss später noch geändert werden!
         }
 
-        static void writeSQLOutput(SqlDataReader reader,ref string eingabe, ref string ausgabe,ref Dictionary<int,string> pokemonListe, ref Dictionary<int,string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchmode, ref Dictionary<int, string> searchBilder,ref int begrenzer)
+        static void writeSQLOutput(SQLiteDataReader reader,ref string eingabe, ref string ausgabe,ref Dictionary<int,string> pokemonListe, ref Dictionary<int,string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchmode, ref Dictionary<int, string> searchBilder,ref int begrenzer)
         {
             bool test;
             int value;

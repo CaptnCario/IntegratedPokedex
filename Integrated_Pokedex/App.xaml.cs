@@ -13,5 +13,6 @@ namespace Integrated_Pokedex
     /// </summary>
     public partial class App : Application
     {
+
     }
 }
