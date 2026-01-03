@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Reflection;
 using static System.Net.Mime.MediaTypeNames;
 using System.Media;
+using System.Data.SQLite;
 
 namespace Integrated_Pokedex
 {
@@ -132,11 +133,11 @@ namespace Integrated_Pokedex
             txtSoundPokemonName.Text = Daten[1];
             txtSizePokemon.Text = Daten[1] + ": " + Daten[7] + "m";
 
-            Typ1.Source = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Typen Bilder\" + Daten[4] + ".png"));
-            
+            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png",UriKind.Relative));
+
             if (Daten[5] != "") 
             {
-                Typ2.Source = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Typen Bilder\" + Daten[5] + ".png"));
+                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png",UriKind.Relative));
             }
             else
             {
@@ -147,7 +148,7 @@ namespace Integrated_Pokedex
             silExists = int.TryParse(Daten[9], out silTemp);
             if (silExists == true)
             {
-                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp]));
+                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp],UriKind.Relative));
                 silExists = false;
             }
 
@@ -335,67 +336,35 @@ namespace Integrated_Pokedex
         }
 
         static void pkDatabase(string eingabe,ref string ausgabe)
-        {               
+        {
             //Define Database
-            string dbName = "Pokedex";
+            string databasePath = @"..\..\Database\Baum.db";
 
             //create connection string
-            string connectionString = @"Data Source=DOORTODARKNESS\SQLEXPRESS;" +
-                "Trusted_Connection = yes;" +
-                $"database={dbName};" +
-                "connection timeout=10";
-
-            //Query
-            string inputQuery = eingabe;
+            string connectionString = "Data Source=" + databasePath + ";Version=3;";
 
             //Connect to SQL Server
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SQLiteConnection sqLiteConnection = new SQLiteConnection(connectionString))
             {
+                //Open SQL connection
+                sqLiteConnection.Open();
+
                 //Init SQL Command
-                using (SqlCommand sqlCommand = new SqlCommand(inputQuery, sqlConnection))
+                using (SQLiteCommand sqLiteCommand = new SQLiteCommand(eingabe, sqLiteConnection))
                 {
-                    try
+                    //Execute Query
+                    using (var reader = sqLiteCommand.ExecuteReader())
                     {
-                        //Open SQL connection
-                        sqlCommand.Connection.Open();
-
-                        //Execute Query
-                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            //Read Data
-                            writeSQLOutput(reader, ref ausgabe);
-
-                        }
+                        //Read Data
+                        writeSQLOutput(reader, ref ausgabe);
                     }
-                    catch (SqlException ex)
-                    {
-                        //Init Stringbuilder
-                        StringBuilder errorMessages = new StringBuilder();
-
-                        //create error string
-                        for (int i = 0; i < ex.Errors.Count; i++)
-                        {
-                            errorMessages.Append("Index #" + i + "\n" +
-                                "Message: " + ex.Errors[i].Message + "\n" +
-                                "LineNumber: " + ex.Errors[i].Source + "\n" +
-                                "Source: " + ex.Errors[i].Source + "\n" +
-                                "Procedure: " + ex.Errors[i].Procedure + "\n");
-                        }
-
-                        Console.WriteLine(errorMessages.ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Exception: " + ex.Message);
-                    }
-
                 }
 
             }
 
         }
 
-        static void writeSQLOutput(SqlDataReader reader,ref string ausgabe)
+        static void writeSQLOutput(SQLiteDataReader reader,ref string ausgabe)
         {
             //Get table column names
 
@@ -447,7 +416,7 @@ namespace Integrated_Pokedex
 
             for(int i=1; i <= 14; i++)
             {
-                silhouetteArry[i] = @"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Silhouette\Silhouette_" + i + ".png";
+                silhouetteArry[i] = @"..\..\Images\Silhouette\Silhouette_" + i + ".png";
             }
         }
 
@@ -465,22 +434,22 @@ namespace Integrated_Pokedex
             //Ist für das Wechseln des Hintergrundbildes da
             if (entEintrag.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Background_Images\showEntry4.png"));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\showEntry4.png",UriKind.Relative));
             }
 
             if (entGewicht.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Background_Images\weightDex.png"));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\weightDex.png",UriKind.Relative));
             }
 
             if (entGroesse.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Background_Images\GroesseDex.png"));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\GroesseDex.png",UriKind.Relative));
             }
 
             if (entRuf.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Background_Images\SoundDex.png"));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\SoundDex.png",UriKind.Relative));
             }
         }
 
@@ -494,7 +463,7 @@ namespace Integrated_Pokedex
         private void soundButton_Click(object sender, RoutedEventArgs e)
         {
             MediaPlayer playSound = new MediaPlayer();
-            playSound.Open(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\PKSounds(MP3)\" + mIndex + ".mp3"));
+            playSound.Open(new Uri(@"PKSounds(MP3)\" + mIndex + ".mp3",UriKind.Relative));
             playSound.Play();
         }
     }
