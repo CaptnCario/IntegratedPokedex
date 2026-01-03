@@ -220,11 +220,11 @@ namespace Integrated_Pokedex
             txtSoundPokemonName.Text = Daten[1];
             txtSizePokemon.Text = Daten[1] + ": " + Daten[7] + "m";
 
-            Typ1.Source = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Typen Bilder\" + Daten[4] + ".png"));
+            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png",UriKind.Relative));
 
             if (Daten[5] != "")
             {
-                Typ2.Source = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Typen Bilder\" + Daten[5] + ".png"));
+                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png",UriKind.Relative));
             }
             else
             {
@@ -235,7 +235,7 @@ namespace Integrated_Pokedex
             silExists = int.TryParse(Daten[9], out silTemp);
             if (silExists == true)
             {
-                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp]));
+                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp],UriKind.Relative));
                 silExists = false;
             }
 
@@ -303,11 +303,11 @@ namespace Integrated_Pokedex
             txtSoundPokemonName.Text = Daten[1];
             txtSizePokemon.Text = Daten[1] + ": " + Daten[7] + "m";
 
-            Typ1.Source = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Typen Bilder\" + Daten[4] + ".png"));
+            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png",UriKind.Relative));
 
             if (Daten[5] != "")
             {
-                Typ2.Source = new BitmapImage(new Uri(@"C:\Users\domis\OneDrive\Mitschriften\4AYIFT\POS - Programmieren\Integrated_Pokedex\Integrated_Pokedex\Images\Typen Bilder\" + Daten[5] + ".png"));
+                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png", UriKind.Relative));
             }
             else
             {
@@ -318,7 +318,7 @@ namespace Integrated_Pokedex
             silExists = int.TryParse(Daten[9], out silTemp);
             if (silExists == true)
             {
-                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp]));
+                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp],UriKind.Relative));
                 silExists = false;
             }
 
