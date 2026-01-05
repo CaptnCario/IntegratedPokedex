@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace Integrated_Pokedex
 {
@@ -542,65 +543,34 @@ namespace Integrated_Pokedex
         static void pkDatabase(string eingabe, ref string ausgabe)
         {
             //Define Database
-            string dbName = "Pokedex";
+            string databasePath = @"..\..\Database\Baum.db";
 
             //create connection string
-            string connectionString = @"Data Source=DOORTODARKNESS\SQLEXPRESS;" +
-                "Trusted_Connection = yes;" +
-                $"database={dbName};" +
-                "connection timeout=10";
-
-            //Query
-            string inputQuery = eingabe;
+            string connectionString = "Data Source=" + databasePath + ";Version=3;";
 
             //Connect to SQL Server
-            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            using (SQLiteConnection sqLiteConnection = new SQLiteConnection(connectionString))
             {
+                //Open SQL connection
+                sqLiteConnection.Open();
+
                 //Init SQL Command
-                using (SqlCommand sqlCommand = new SqlCommand(inputQuery, sqlConnection))
+                using (SQLiteCommand sqlCommand = new SQLiteCommand(eingabe, sqLiteConnection))
                 {
-                    try
+                    //Execute Query
+                    using (SQLiteDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        //Open SQL connection
-                        sqlCommand.Connection.Open();
+                        //Read Data
+                        writeSQLOutput(reader, ref ausgabe);
 
-                        //Execute Query
-                        using (SqlDataReader reader = sqlCommand.ExecuteReader())
-                        {
-                            //Read Data
-                            writeSQLOutput(reader, ref ausgabe);
-
-                        }
                     }
-                    catch (SqlException ex)
-                    {
-                        //Init Stringbuilder
-                        StringBuilder errorMessages = new StringBuilder();
-
-                        //create error string
-                        for (int i = 0; i < ex.Errors.Count; i++)
-                        {
-                            errorMessages.Append("Index #" + i + "\n" +
-                                "Message: " + ex.Errors[i].Message + "\n" +
-                                "LineNumber: " + ex.Errors[i].Source + "\n" +
-                                "Source: " + ex.Errors[i].Source + "\n" +
-                                "Procedure: " + ex.Errors[i].Procedure + "\n");
-                        }
-
-                        Console.WriteLine(errorMessages.ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("Exception: " + ex.Message);
-                    }
-
                 }
 
             }
 
         }
 
-        static void writeSQLOutput(SqlDataReader reader, ref string ausgabe)
+        static void writeSQLOutput(SQLiteDataReader reader, ref string ausgabe)
         {
             //Get table column names
 
