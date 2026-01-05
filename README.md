@@ -8,7 +8,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="Icon.png" alt="Icon" width="80" height="120">
+    <img src="Icon.png" alt="Icon" width="80" height="150">
   </a>
 
 <h3 align="center">Integrated Pokédex</h3>
