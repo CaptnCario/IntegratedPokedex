@@ -1,24 +1,25 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![project_license][license-shield]][license-url]
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="Icon.png" alt="Icon" width="80" height="150">
-  </a>
+<h1 align="center">
+  <br>
+  <a href="https://github.com/CaptnCario/IntegratedPokedex?tab=readme-ov-file"><img src="Icon.png" alt="Markdownify" width="200"></a>
+  <br>
+      Integrated Pokédex
+  <br>
+</h1>
 
-<h3 align="center">Integrated Pokédex</h3>
+<h4 align="center">This Pokedex involves every Pokemon from generation 1 up to generation 9</h4>
 
-  <p align="center">
-    This Pokedex involves every Pokemon from generation 1 up to generation 9
-    &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#download">Download</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#related">Related</a> •
+  <a href="#license">License</a>
+</p>
+
+
+![screenshot](Logo.png)
+
+## READ ME in work!
 
