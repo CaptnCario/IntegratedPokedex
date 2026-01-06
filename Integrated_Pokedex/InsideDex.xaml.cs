@@ -784,7 +784,6 @@ namespace Integrated_Pokedex
                     //Open SQL connection
                     sqLiteConnection.Open();
 
-
                     //Init SQL Command
                     using (SQLiteCommand sqLiteCommand = new SQLiteCommand(eingabe,sqLiteConnection))
                     {
