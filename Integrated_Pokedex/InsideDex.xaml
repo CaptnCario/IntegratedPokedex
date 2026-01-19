@@ -25,9 +25,9 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="36*"/>
+            <ColumnDefinition Width="30*"/>
             <!-- Spalte 0-->
-            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="200*"/>
             <!-- Spalte 1-->
             <ColumnDefinition Width="31*"/>
             <!-- Spalte 2-->
@@ -74,14 +74,14 @@
 
         </StackPanel>
 
-        <TextBlock Margin="5,0,0,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Orev" VerticalAlignment="Center" FontSize="16" Height="17">Hier hast du die Möglichkeit, ein Pokemon zu Suchen, oder es anzusehen</TextBlock>
+        <TextBlock Margin="5,0,0,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Verdana" VerticalAlignment="Top" FontSize="13" Grid.RowSpan="2">Hier hast du die Möglichkeit, ein Pokemon zu Suchen, oder es anzusehen</TextBlock>
 
         <Image Grid.Column="4" Grid.Row="4" Source="/Images/Icons/pokeball.png" Margin="40,2,-132,0" />
 
         <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,2,0,0">
             <Button Cursor="Hand" Margin="0,10,0,0" Height="50"  Background="#339130" Foreground="White" Name="dexSuche" Click="dexSuche_Click" ToolTip="Öffne die Pokémon Suche, um nach Pokemon zu filtern">
                 <WrapPanel>
-                    <TextBlock FontSize="20" FontFamily="Orev" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
+                    <TextBlock FontSize="18" FontFamily="Bahnschrift" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
                     Im Pokédex Suchen
                     </TextBlock>
                     <Image HorizontalAlignment="Right" Opacity=".8" Width="40px" Source="/Images/Icons/suche.png"/>
@@ -95,7 +95,7 @@
 
             <Button Cursor="Hand" Margin="0,15,0,0" FontSize="20" Height="50"  Background="#56BDBB" Foreground="White" IsCancel="True" ToolTip="Wechseln Sie zu einem anderen Pokédex">
                 <WrapPanel>
-                    <TextBlock FontSize="20px" FontFamily="Orev" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
+                    <TextBlock FontSize="18" FontFamily="Bahnschrift" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
                     Pokédex wechseln
                     </TextBlock>
                     <Image HorizontalAlignment="Right" Opacity=".8" Width="40px"  Source="/Images/Icons/Move_down.png" />
@@ -111,7 +111,7 @@
 
             <Button Cursor="Hand" Margin="0,15,0,0" FontSize="20" Height="150" Background="#339130" Foreground="White" Name="dexAnsehen" Click="dexAnsehen_Click" ToolTip="Schauen Sie sich die genauen Informationen zu dem Pokemon an">
                 <StackPanel>
-                    <TextBlock  FontSize="28px" FontFamily="Orev" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
+                    <TextBlock FontSize="21" FontFamily="Bahnschrift" TextAlignment="Left" VerticalAlignment="Center" FontWeight="ExtraBold">
                     Im Pokédex ansehen
                     </TextBlock>
                     <Image HorizontalAlignment="Center" Opacity=".8" Width="80px"  Source="/Images/Icons/Buch.png" />
@@ -127,7 +127,7 @@
         </StackPanel>
 
         <!--Jetzt kommen die Buttons für das Bewegen-->
-        <StackPanel Grid.Row="4" Grid.Column="2" Margin="20,2,0,0" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="4" Grid.Column="2" Margin="17.5,2,2.5,0" Grid.ColumnSpan="2">
             <Button Cursor="Hand" Margin="0,50,0,0" Height="45" FontSize="30" FontWeight="Bold" Background="LightBlue" Foreground="DarkBlue" Name="gOben"  Click="gOben_Click" ToolTip="Gehen Sie zu dem ersten Eintrag des Pokédexes">
                 <Button.Resources>
                     <Style TargetType="Border">
