@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Integrated_Pokedex"
         mc:Ignorable="d"
-        Title="InsideDex" Height="700" Width="520" MinHeight="700" MinWidth="500">
+        Title="InsideDex" Height="700" Width="525" MinHeight="700" MinWidth="525">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/Background_Images/insideDex.png" />
@@ -38,7 +38,7 @@
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="1" Margin="0,3,0,22" Source="/Images/Images/Dex_Anzeige.png" />
-        <TextBlock Name="txtDexÜberschrift" TextAlignment="Center" FontFamily="Pixel LCD7" Foreground="White" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="12" Width="118" Margin="0,12,0,0" ToolTip="Das zeigt den Pokédex der aktuellen Region">[POKEDEX-NAME]</TextBlock>
+        <TextBlock Name="txtDexÜberschrift" TextAlignment="Center" FontFamily="Pixel LCD7" Foreground="White" FontWeight="Bold" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="14" Width="118" Margin="0,10,0,0" ToolTip="Das zeigt den Pokédex der aktuellen Region">[POKEDEX-NAME]</TextBlock>
 
         <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="130" x:Name="pkmnBild" Source="https://media.bisafans.de/6990e67//pokemon/artwork/162.png" Width="130" ToolTip="Das Pokemon was du gerade ausgewählt hast"/>
 
@@ -76,7 +76,17 @@
 
         <TextBlock Margin="5,0,0,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Verdana" VerticalAlignment="Top" FontSize="13" Grid.RowSpan="2">Hier hast du die Möglichkeit, ein Pokemon zu Suchen, oder es anzusehen</TextBlock>
 
-        <Image Grid.Column="4" Grid.Row="4" Source="/Images/Icons/pokeball.png" Margin="40,2,-132,0" />
+        <Image Grid.Column="4" Grid.Row="4" x:Name="pkmnBall" Source="/Images/Icons/pokeball.png" Margin="40,2,-132,0" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+
+        </Image>
 
         <StackPanel Grid.Row="4" Grid.Column="1" Margin="0,2,0,0">
             <Button Cursor="Hand" Margin="0,10,0,0" Height="50"  Background="#339130" Foreground="White" Name="dexSuche" Click="dexSuche_Click" ToolTip="Öffne die Pokémon Suche, um nach Pokemon zu filtern">

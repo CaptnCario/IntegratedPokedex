@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Data.SQLite;
+using System.Windows.Media;
 
 namespace Integrated_Pokedex
 {
@@ -30,6 +31,7 @@ namespace Integrated_Pokedex
         bool durchgang = true;
         bool searchMode;
         int begrenzer;
+        int rotater = 0;
         string pokedexWahl;
         public static int mindIndex;
         public static int maxiIndex;
@@ -483,6 +485,8 @@ namespace Integrated_Pokedex
 
         private void gOben_Click(object sender, RoutedEventArgs e)
         {
+            rotater = ballRotation(rotater, pkmnBall, 'o');
+
             index = NumberDex.Values.First();
 
             //Übergabe des Indexes in die Klasse
@@ -517,7 +521,8 @@ namespace Integrated_Pokedex
 
         private void kOben_Click(object sender, RoutedEventArgs e)
         {
-
+            rotater = ballRotation(rotater, pkmnBall,'o');
+            
             if (index > NumberDex.Values.First())
             {
                 index--;
@@ -551,6 +556,8 @@ namespace Integrated_Pokedex
 
         private void kUnten_Click(object sender, RoutedEventArgs e)
         {
+            rotater = ballRotation(rotater, pkmnBall, 'u');
+
             if (searchMode == false)
             {
                 if (index < NumberDex.Values.Last())
@@ -565,8 +572,6 @@ namespace Integrated_Pokedex
                     index++;
                 }
             }
-
-
 
             PokedexKlasse.GetSingleton().pkdxIndex = index;
             //Start der Methode zur Berechnung des Pokemon Liste
@@ -596,6 +601,8 @@ namespace Integrated_Pokedex
 
         private void gUnten_Click(object sender, RoutedEventArgs e)
         {
+            rotater = ballRotation(rotater, pkmnBall, 'u');
+
             if (searchMode == false)
             {
                 index = NumberDex.Values.Last();
@@ -1027,5 +1034,21 @@ namespace Integrated_Pokedex
 
         }
 
+        static int ballRotation(int rotater,Image pkmnBall,char clickedButton)
+        {
+            switch (clickedButton)
+            {
+                case 'o':
+                    rotater += 20;
+                    break;
+
+                case 'u':
+                    rotater += -20;
+                    break;
+            }
+            pkmnBall.RenderTransform = new RotateTransform(rotater);
+
+            return rotater;
+        }
     }
 }
