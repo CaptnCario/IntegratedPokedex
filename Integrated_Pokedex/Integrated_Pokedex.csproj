@@ -220,6 +220,7 @@
     <Resource Include="Images\Icons\groesse.png" />
     <Resource Include="Images\Icons\sound.png" />
     <Resource Include="Images\Icons\Buch.png" />
+    <Resource Include="Images\Icons\Icon.png" />
     <Content Include="PKSounds%28MP3%29\1.mp3" />
     <Content Include="PKSounds%28MP3%29\10.mp3" />
     <Content Include="PKSounds%28MP3%29\100.mp3" />

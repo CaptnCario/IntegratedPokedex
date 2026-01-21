@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Integrated_Pokedex"
         mc:Ignorable="d"
+        Icon="/Images/Icons/Icon.png"
         Title="InsideDex" Height="700" Width="525" MinHeight="700" MinWidth="525">
     <Grid>
         <Grid.Background>

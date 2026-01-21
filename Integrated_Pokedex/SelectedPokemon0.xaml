@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Integrated_Pokedex"
         mc:Ignorable="d"
+        Icon="/Images/Icons/Icon.png"
         Title="SelectedPokemon" Height="725" Width="500" MinHeight="725" MinWidth="500" Closing="Window_Closing">
     <Grid Name="pkInsideDex">
         <Grid.RowDefinitions>
