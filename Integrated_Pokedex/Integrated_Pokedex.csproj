@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AudioDex.cs" />
     <Compile Include="DatabaseConnector.cs" />
     <Compile Include="PokedexKlasse.cs" />
     <Compile Include="SelectedPokemon0.xaml.cs">
@@ -221,6 +222,7 @@
     <Resource Include="Images\Icons\sound.png" />
     <Resource Include="Images\Icons\Buch.png" />
     <Resource Include="Images\Icons\Icon.png" />
+    <Content Include="DexAudio\scrollSound.mp3" />
     <Content Include="PKSounds%28MP3%29\1.mp3" />
     <Content Include="PKSounds%28MP3%29\10.mp3" />
     <Content Include="PKSounds%28MP3%29\100.mp3" />

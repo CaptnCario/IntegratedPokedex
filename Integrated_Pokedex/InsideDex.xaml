@@ -43,7 +43,7 @@
 
         <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="130" x:Name="pkmnBild" Source="https://media.bisafans.de/6990e67//pokemon/artwork/162.png" Width="130" ToolTip="Das Pokemon was du gerade ausgewählt hast" Margin="56,37,0,0"/>
 
-        <StackPanel Grid.Column="4" Margin="0,3,0,0" Grid.Row="1" >
+        <StackPanel Grid.Column="4" Grid.ColumnSpan="4" Margin="0,3,0,0" Grid.Row="1" >
 
             <Border CornerRadius="7" Margin="20,-1,0,5" Background="#6B6936" Width="2013" >
                 <TextBlock  FontFamily="Orev" FontWeight="ExtraBlack" Margin="5,0,0,2" Padding="2" Name="txtLineM3">[ID POKEMON NAME - 3]</TextBlock>

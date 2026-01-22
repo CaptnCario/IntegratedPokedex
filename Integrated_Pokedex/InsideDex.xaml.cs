@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Data.SQLite;
 using System.Windows.Media;
+using System.Media;
 
 namespace Integrated_Pokedex
 {
@@ -35,6 +36,8 @@ namespace Integrated_Pokedex
         string pokedexWahl;
         public static int mindIndex;
         public static int maxiIndex;
+        string scrollFile = @"..\..\DexAudio\scrollSound.mp3";
+        AudioDex AudioFile = new AudioDex();
 
         public InsideDex()
         {
@@ -480,12 +483,12 @@ namespace Integrated_Pokedex
             }
             mindIndex = NumberDex.Values.First();
             maxiIndex = NumberDex.Values.Last();
-
         }
 
         private void gOben_Click(object sender, RoutedEventArgs e)
         {
             rotater = ballRotation(rotater, pkmnBall, 'o');
+            AudioFile.PlayScrollScround();
 
             index = NumberDex.Values.First();
 
@@ -522,7 +525,8 @@ namespace Integrated_Pokedex
         private void kOben_Click(object sender, RoutedEventArgs e)
         {
             rotater = ballRotation(rotater, pkmnBall,'o');
-            
+            AudioFile.PlayScrollScround();
+
             if (index > NumberDex.Values.First())
             {
                 index--;
@@ -551,12 +555,12 @@ namespace Integrated_Pokedex
                 pkmnBild.Source = new BitmapImage(new Uri(searchBilder[index]));
             }
 
-            //Ende der Methode zur Berechnung der Pokemon Liste
         }
 
         private void kUnten_Click(object sender, RoutedEventArgs e)
         {
             rotater = ballRotation(rotater, pkmnBall, 'u');
+            AudioFile.PlayScrollScround();
 
             if (searchMode == false)
             {
@@ -596,12 +600,12 @@ namespace Integrated_Pokedex
                 pkmnBild.Source = new BitmapImage(new Uri(searchBilder[index]));
             }
 
-            //Ende der Methode zur Berechnung der Pokemon Liste
         }
 
         private void gUnten_Click(object sender, RoutedEventArgs e)
         {
             rotater = ballRotation(rotater, pkmnBall, 'u');
+            AudioFile.PlayScrollScround();
 
             if (searchMode == false)
             {
@@ -1050,5 +1054,6 @@ namespace Integrated_Pokedex
 
             return rotater;
         }
+
     }
 }
