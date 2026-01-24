@@ -38,6 +38,7 @@ namespace Integrated_Pokedex
         int maxIndex = InsideDex.maxiIndex;
         int minIndex = InsideDex.mindIndex;
         public InsideDex vorWindow;
+        AudioDex AudioFile = new AudioDex();
         public SelectedPokemon0()
         {
             InitializeComponent();
@@ -174,7 +175,6 @@ namespace Integrated_Pokedex
             }
 
             PokedexKlasse.GetSingleton().pkdxIndex = mIndex;
-
 
             Daten.Clear();
             ausgabe = "";
@@ -359,15 +359,12 @@ namespace Integrated_Pokedex
                         writeSQLOutput(reader, ref ausgabe);
                     }
                 }
-
             }
-
         }
 
         static void writeSQLOutput(SQLiteDataReader reader,ref string ausgabe)
         {
             //Get table column names
-
             if (reader.RecordsAffected <= 0)
             {
                 foreach (DataRow row in reader.GetSchemaTable().Rows)
@@ -462,9 +459,7 @@ namespace Integrated_Pokedex
 
         private void soundButton_Click(object sender, RoutedEventArgs e)
         {
-            MediaPlayer playSound = new MediaPlayer();
-            playSound.Open(new Uri(@"PKSounds(MP3)\" + mIndex + ".mp3",UriKind.Relative));
-            playSound.Play();
+            AudioFile.PlayPokemonSound(Daten[1],MainWindow.pokedexID);
         }
     }
 }

@@ -496,12 +496,10 @@ namespace Integrated_Pokedex
             PokedexKlasse.GetSingleton().pkdxIndex = index;
 
             //Start der Methode zur Berechnung des Pokemon Liste
-
             beAfMainPK(index, ref otherEntrys);
 
             //Zur Verhinderung das es über 1 geht
             //Dictionary ist problem
-
             errorLimiterP(index, ref otherEntrys, txtLineP1, txtLineP2, txtLineP3, pokemonListe, pokedex_ID, ref searchListe, searchMode, ref begrenzer, ref NumberDex);
 
             //Zur Verhinderung das es über 1 geht

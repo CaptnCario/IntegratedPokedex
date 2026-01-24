@@ -36,6 +36,7 @@
             <!-- Spalte 3-->
             <ColumnDefinition Width="209*"/>
             <!-- Spalte 4-->
+            
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="1" Margin="0,3,0,22" Source="/Images/Images/Dex_Anzeige.png" />
