@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace Integrated_Pokedex
@@ -52,9 +48,9 @@ namespace Integrated_Pokedex
         public void PlayPokemonSound(string DName, char regionID)
         {
             string region = PokedexRegion(regionID);
-            string eingabe = "Select pd.PokedexID FROM PokemonData pd JOIN "+region+" dpd ON pd.DName = dpd.DName Where dpd.DName = '"+DName+"';";
-            string ausgabe ="";
-            
+            string eingabe = "Select pd.PokedexID FROM PokemonData pd JOIN " + region + " dpd ON pd.DName = dpd.DName Where dpd.DName = '" + DName + "';";
+            string ausgabe = "";
+
             pkDatabase(eingabe, ref ausgabe);
             ausgabe = string.Concat(ausgabe.Where(c => !Char.IsWhiteSpace(c)));
             Temp = PokemonSoundPath;
@@ -158,7 +154,5 @@ namespace Integrated_Pokedex
                     return "";
             }
         }
-
-            
     }
 }

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
-using System.IO;
-using System.Data.SQLite;
 using System.Windows.Media;
-using System.Media;
+using System.Windows.Media.Imaging;
 
 namespace Integrated_Pokedex
 {
@@ -36,7 +33,6 @@ namespace Integrated_Pokedex
         string pokedexWahl;
         public static int mindIndex;
         public static int maxiIndex;
-        string scrollFile = @"..\..\DexAudio\scrollSound.mp3";
         AudioDex AudioFile = new AudioDex();
 
         public InsideDex()
@@ -522,7 +518,7 @@ namespace Integrated_Pokedex
 
         private void kOben_Click(object sender, RoutedEventArgs e)
         {
-            rotater = ballRotation(rotater, pkmnBall,'o');
+            rotater = ballRotation(rotater, pkmnBall, 'o');
             AudioFile.PlayScrollScround();
 
             if (index > NumberDex.Values.First())
@@ -656,7 +652,7 @@ namespace Integrated_Pokedex
 
             eingabe = PokedexKlasse.ZeichenSingelton().classNameSQLBefehl;
 
-            if (eingabe != "") 
+            if (eingabe != "")
             {
                 searchMode = true;
                 dexAnsehen.Visibility = Visibility.Hidden;
@@ -667,7 +663,7 @@ namespace Integrated_Pokedex
                 dexAnsehen.Visibility = Visibility.Visible;
             }
 
-            if(searchMode == true)
+            if (searchMode == true)
             {
                 NumberDex.Clear();
                 pkDatabase(eingabe, ref ausgabe, ref pokemonListe, ref pkBilderListe, ref searchListe, searchMode, ref searchBilder, ref begrenzer);
@@ -762,7 +758,7 @@ namespace Integrated_Pokedex
 
                 pkmnBild.Source = new BitmapImage(new Uri(searchBilder[index]));
             }
-            
+
 
 
             //Ende der Methode zur Berechnung der Pokemon Liste
@@ -778,13 +774,13 @@ namespace Integrated_Pokedex
 
         }
 
-        static void pkDatabase(string eingabe,ref string ausgabe, ref Dictionary<int,string> pokemonListe, ref Dictionary<int,string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchMode, ref Dictionary<int, string> searchBilder, ref int begrenzer)
+        static void pkDatabase(string eingabe, ref string ausgabe, ref Dictionary<int, string> pokemonListe, ref Dictionary<int, string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchMode, ref Dictionary<int, string> searchBilder, ref int begrenzer)
         {
             string databasePath = @"..\..\Database\Baum.db";
-            
+
             //create connection string
-            string connectionString = "Data Source="+databasePath+";Version=3;";
-            
+            string connectionString = "Data Source=" + databasePath + ";Version=3;";
+
             do
             {
                 //Connect to SQL Server
@@ -794,7 +790,7 @@ namespace Integrated_Pokedex
                     sqLiteConnection.Open();
 
                     //Init SQL Command
-                    using (SQLiteCommand sqLiteCommand = new SQLiteCommand(eingabe,sqLiteConnection))
+                    using (SQLiteCommand sqLiteCommand = new SQLiteCommand(eingabe, sqLiteConnection))
                     {
                         //Execute Query
                         using (var reader = sqLiteCommand.ExecuteReader())
@@ -807,7 +803,7 @@ namespace Integrated_Pokedex
             } while (false); //Muss später noch geändert werden!
         }
 
-        static void writeSQLOutput(SQLiteDataReader reader,ref string eingabe, ref string ausgabe,ref Dictionary<int,string> pokemonListe, ref Dictionary<int,string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchmode, ref Dictionary<int, string> searchBilder,ref int begrenzer)
+        static void writeSQLOutput(SQLiteDataReader reader, ref string eingabe, ref string ausgabe, ref Dictionary<int, string> pokemonListe, ref Dictionary<int, string> pkBilderListe, ref Dictionary<int, string> searchListe, bool searchmode, ref Dictionary<int, string> searchBilder, ref int begrenzer)
         {
             bool test;
             int value;
@@ -838,13 +834,13 @@ namespace Integrated_Pokedex
                     begrenzer++;
 
                     test = int.TryParse(ausgabe, out value);
-                    if (test == true) 
+                    if (test == true)
                     {
                         sValue = value;
                     }
 
                     if (eingabe.Contains("DName"))
-                    { 
+                    {
                         if (test == false)
                         {
                             if (searchmode == false)
@@ -853,13 +849,14 @@ namespace Integrated_Pokedex
                             }
                             else
                             {
-                                searchListe.Add(nameValue,ausgabe);
+                                searchListe.Add(nameValue, ausgabe);
                                 nameValue++;
                             }
 
                         }
 
-                    } else if (eingabe.Contains("Link"))
+                    }
+                    else if (eingabe.Contains("Link"))
                     {
                         if (test == false)
                         {
@@ -884,15 +881,15 @@ namespace Integrated_Pokedex
         {
             int temp;
 
-            for(int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 3; i++)
             {
                 temp = 0;
                 temp = index + i;
-                otherEntrys[i+3] = temp;
+                otherEntrys[i + 3] = temp;
 
             }
 
-            for(int i=1; i <= 3; i++)
+            for (int i = 1; i <= 3; i++)
             {
                 temp = 0;
                 temp = index - i;
@@ -901,12 +898,12 @@ namespace Integrated_Pokedex
 
         }
 
-        static void errorLimiterM(int index, ref int[] otherEntrys,TextBlock txtLineM1,TextBlock txtLineM2,TextBlock txtLineM3,Dictionary<int,string> pokemonListe, ref Dictionary<int, string> searchListe, bool searchMode,ref Dictionary<int,int> NumberDex)
+        static void errorLimiterM(int index, ref int[] otherEntrys, TextBlock txtLineM1, TextBlock txtLineM2, TextBlock txtLineM3, Dictionary<int, string> pokemonListe, ref Dictionary<int, string> searchListe, bool searchMode, ref Dictionary<int, int> NumberDex)
         {
             if (searchMode == false)
             {
                 //TextLineM1
-                if (index <= NumberDex.Values.First() + 2) 
+                if (index <= NumberDex.Values.First() + 2)
                 {
                     txtLineM3.Text = "------------------------";
                 }
@@ -915,7 +912,7 @@ namespace Integrated_Pokedex
                     txtLineM3.Text = otherEntrys[3] + " " + pokemonListe[otherEntrys[3]];
                 }
                 //TextLineM2
-                if (index <= NumberDex.Values.First() + 1) 
+                if (index <= NumberDex.Values.First() + 1)
                 {
                     txtLineM2.Text = "------------------------";
                 }
@@ -936,7 +933,7 @@ namespace Integrated_Pokedex
             else
             {
                 //TextLineM1
-                if (index <= NumberDex.Values.First() + 2) 
+                if (index <= NumberDex.Values.First() + 2)
                 {
                     txtLineM3.Text = "------------------------";
                 }
@@ -945,7 +942,7 @@ namespace Integrated_Pokedex
                     txtLineM3.Text = otherEntrys[3] + " " + searchListe[otherEntrys[3]];
                 }
                 //TextLineM2
-                if (index <= NumberDex.Values.First() + 1) 
+                if (index <= NumberDex.Values.First() + 1)
                 {
                     txtLineM2.Text = "------------------------";
                 }
@@ -966,7 +963,7 @@ namespace Integrated_Pokedex
 
         }
 
-        static void errorLimiterP(int index, ref int[] otherEntrys, TextBlock txtLineP1, TextBlock txtLineP2, TextBlock txtLineP3, Dictionary<int, string> pokemonListe, char pokedex_ID, ref Dictionary<int, string> searchListe, bool searchMode,ref int begrenzer, ref Dictionary<int,int> NumberDex)
+        static void errorLimiterP(int index, ref int[] otherEntrys, TextBlock txtLineP1, TextBlock txtLineP2, TextBlock txtLineP3, Dictionary<int, string> pokemonListe, char pokedex_ID, ref Dictionary<int, string> searchListe, bool searchMode, ref int begrenzer, ref Dictionary<int, int> NumberDex)
         {
             if (searchMode == false)
             {
@@ -999,7 +996,7 @@ namespace Integrated_Pokedex
                     txtLineP1.Text = otherEntrys[4] + " " + pokemonListe[otherEntrys[4]];
 
                 }
-  
+
             }
             else
             {
@@ -1013,7 +1010,7 @@ namespace Integrated_Pokedex
                     txtLineP3.Text = otherEntrys[6] + " " + searchListe[otherEntrys[6]];
                 }
                 //TextLineP2 
-                if (index >= NumberDex.Values.Last()- 1)
+                if (index >= NumberDex.Values.Last() - 1)
                 {
                     txtLineP2.Text = "------------------------";
                 }
@@ -1036,7 +1033,7 @@ namespace Integrated_Pokedex
 
         }
 
-        static int ballRotation(int rotater,Image pkmnBall,char clickedButton)
+        static int ballRotation(int rotater, Image pkmnBall, char clickedButton)
         {
             switch (clickedButton)
             {

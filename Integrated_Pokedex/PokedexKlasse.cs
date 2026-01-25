@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Integrated_Pokedex
+﻿namespace Integrated_Pokedex
 {
     internal class PokedexKlasse
     {
@@ -16,9 +10,10 @@ namespace Integrated_Pokedex
         {
             pkdxIndex = 1;
         }
-        
+
         private static PokedexKlasse wert = null;
-        public static PokedexKlasse GetSingleton() {
+        public static PokedexKlasse GetSingleton()
+        {
             if (wert == null)
             {
                 wert = new PokedexKlasse();

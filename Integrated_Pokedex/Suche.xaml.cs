@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data.SQLite;
 
 namespace Integrated_Pokedex
 {
@@ -64,8 +53,6 @@ namespace Integrated_Pokedex
                         AltesFenster.Update();
                         this.Close();
                     }
-
-
                     break;
 
                 case ('K'):
@@ -75,11 +62,11 @@ namespace Integrated_Pokedex
                         nEingabe = txtName.Text;
                     }
                     dexWahl = "dbKantoDex";
-                    BefehlChecker(filter,ref sqlBefehlName,ref sqlBefehlBild,dexWahl,nEingabe,typEingabe,silEingabe);
+                    BefehlChecker(filter, ref sqlBefehlName, ref sqlBefehlBild, dexWahl, nEingabe, typEingabe, silEingabe);
 
                     pkDatabase(sqlBefehlName, ref ausgabe);
 
-                    if (filter[0] == false && filter[1] == false && filter[2] == false)  
+                    if (filter[0] == false && filter[1] == false && filter[2] == false)
                     {
                         sucheError Fehler = new sucheError();
                         Fehler.ShowDialog();
@@ -91,7 +78,6 @@ namespace Integrated_Pokedex
                         AltesFenster.Update();
                         this.Close();
                     }
-
                     break;
 
                 case ('H'):
@@ -141,7 +127,6 @@ namespace Integrated_Pokedex
                         AltesFenster.Update();
                         this.Close();
                     }
-
                     break;
 
                 case ('E'):
@@ -167,7 +152,6 @@ namespace Integrated_Pokedex
                         AltesFenster.Update();
                         this.Close();
                     }
-
                     break;
 
                 case ('L'):
@@ -305,7 +289,7 @@ namespace Integrated_Pokedex
 
 
             }
-        
+
 
         }
 
@@ -339,7 +323,7 @@ namespace Integrated_Pokedex
                 checkTypen.IsChecked = true;
                 filter[1] = true;
 
-                if(boxNormal.IsChecked == true)
+                if (boxNormal.IsChecked == true)
                 {
                     typEingabe = "Normal";
                 }
@@ -481,7 +465,7 @@ namespace Integrated_Pokedex
             }
         }
 
-        static void BefehlChecker(bool[] filter, ref string sqlBefehlName,ref string sqlBefehlBild,string dexWahl,string nEingabe, string typEingabe,int silEingabe)
+        static void BefehlChecker(bool[] filter, ref string sqlBefehlName, ref string sqlBefehlBild, string dexWahl, string nEingabe, string typEingabe, int silEingabe)
         {
             if (filter[0] == true)
             {
@@ -596,9 +580,6 @@ namespace Integrated_Pokedex
                 Console.WriteLine();
             }
         }
-
-
-
     }
 
 }

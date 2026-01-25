@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Reflection;
-using static System.Net.Mime.MediaTypeNames;
-using System.Media;
-using System.Data.SQLite;
 
 namespace Integrated_Pokedex
 {
@@ -95,9 +83,9 @@ namespace Integrated_Pokedex
             mIndex = PokedexKlasse.GetSingleton().pkdxIndex;
             eingabe = "Select PokedexID, DName, EName, EvolutionID, Typ1, Typ2, Bezeichnung, Groesse, Gewicht, SilhouettenID, Link from " + PokdexWahl + " where PokedexID = " + mIndex + ";";
 
-            pkDatabase(eingabe,ref ausgabe);
+            pkDatabase(eingabe, ref ausgabe);
 
-            stringList(ref ausgabe, ref Daten,eingabe);
+            stringList(ref ausgabe, ref Daten, eingabe);
 
             silhouettenVergleich(silhouetteArry);
 
@@ -117,7 +105,7 @@ namespace Integrated_Pokedex
             //Größe
             pkSizeMainPic.Source = new BitmapImage(new Uri(Daten[10]));
             groesseTF = double.TryParse(Daten[7], out tempGroesse);
-            if(tempGroesse<= 1.7)
+            if (tempGroesse <= 1.7)
             {
                 pkSizeMainPic.Width = tempGroesse * (165 / 1.7);
             }
@@ -134,22 +122,22 @@ namespace Integrated_Pokedex
             txtSoundPokemonName.Text = Daten[1];
             txtSizePokemon.Text = Daten[1] + ": " + Daten[7] + "m";
 
-            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png",UriKind.Relative));
+            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png", UriKind.Relative));
 
-            if (Daten[5] != "") 
+            if (Daten[5] != "")
             {
-                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png",UriKind.Relative));
+                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png", UriKind.Relative));
             }
             else
             {
                 Typ2.Source = null;
-            }            
+            }
 
             //CodeSnippet für Silhouette
             silExists = int.TryParse(Daten[9], out silTemp);
             if (silExists == true)
             {
-                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp],UriKind.Relative));
+                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp], UriKind.Relative));
                 silExists = false;
             }
 
@@ -161,7 +149,7 @@ namespace Integrated_Pokedex
 
             pkDatabase(eingabe, ref ausgabe);
 
-            stringList(ref ausgabe, ref Daten,eingabe);
+            stringList(ref ausgabe, ref Daten, eingabe);
 
             txtPkEintrag.Text = Daten[12];
 
@@ -181,10 +169,10 @@ namespace Integrated_Pokedex
 
             //Start der Information
             eingabe = "Select PokedexID, DName, EName, EvolutionID, Typ1, Typ2, Bezeichnung, Groesse, Gewicht, SilhouettenID, Link from " + PokdexWahl + " where PokedexID = " + mIndex + ";";
-            
+
             pkDatabase(eingabe, ref ausgabe);
-            
-            stringList(ref ausgabe, ref Daten,eingabe);
+
+            stringList(ref ausgabe, ref Daten, eingabe);
 
             silhouettenVergleich(silhouetteArry);
 
@@ -220,11 +208,11 @@ namespace Integrated_Pokedex
             txtSoundPokemonName.Text = Daten[1];
             txtSizePokemon.Text = Daten[1] + ": " + Daten[7] + "m";
 
-            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png",UriKind.Relative));
+            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png", UriKind.Relative));
 
             if (Daten[5] != "")
             {
-                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png",UriKind.Relative));
+                Typ2.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[5] + ".png", UriKind.Relative));
             }
             else
             {
@@ -235,7 +223,7 @@ namespace Integrated_Pokedex
             silExists = int.TryParse(Daten[9], out silTemp);
             if (silExists == true)
             {
-                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp],UriKind.Relative));
+                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp], UriKind.Relative));
                 silExists = false;
             }
 
@@ -269,7 +257,7 @@ namespace Integrated_Pokedex
 
             pkDatabase(eingabe, ref ausgabe);
 
-            stringList(ref ausgabe, ref Daten,eingabe);
+            stringList(ref ausgabe, ref Daten, eingabe);
 
             //Eintrag
             txtPkmnID.Text = Daten[0];
@@ -303,7 +291,7 @@ namespace Integrated_Pokedex
             txtSoundPokemonName.Text = Daten[1];
             txtSizePokemon.Text = Daten[1] + ": " + Daten[7] + "m";
 
-            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png",UriKind.Relative));
+            Typ1.Source = new BitmapImage(new Uri(@"..\..\Images\Typen Bilder\" + Daten[4] + ".png", UriKind.Relative));
 
             if (Daten[5] != "")
             {
@@ -318,7 +306,7 @@ namespace Integrated_Pokedex
             silExists = int.TryParse(Daten[9], out silTemp);
             if (silExists == true)
             {
-                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp],UriKind.Relative));
+                pkSilhouette.Source = new BitmapImage(new Uri(silhouetteArry[silTemp], UriKind.Relative));
                 silExists = false;
             }
 
@@ -335,7 +323,7 @@ namespace Integrated_Pokedex
             txtPkEintrag.Text = Daten[12];
         }
 
-        static void pkDatabase(string eingabe,ref string ausgabe)
+        static void pkDatabase(string eingabe, ref string ausgabe)
         {
             //Define Database
             string databasePath = @"..\..\Database\Baum.db";
@@ -362,7 +350,7 @@ namespace Integrated_Pokedex
             }
         }
 
-        static void writeSQLOutput(SQLiteDataReader reader,ref string ausgabe)
+        static void writeSQLOutput(SQLiteDataReader reader, ref string ausgabe)
         {
             //Get table column names
             if (reader.RecordsAffected <= 0)
@@ -388,7 +376,7 @@ namespace Integrated_Pokedex
             }
         }
 
-        static void stringList(ref string ausgabe,ref List<string> Daten, string eingabe)
+        static void stringList(ref string ausgabe, ref List<string> Daten, string eingabe)
         {
             if (eingabe.Contains("Eintrag"))
             {
@@ -411,7 +399,7 @@ namespace Integrated_Pokedex
         static void silhouettenVergleich(string[] silhouetteArry)
         {
 
-            for(int i=1; i <= 14; i++)
+            for (int i = 1; i <= 14; i++)
             {
                 silhouetteArry[i] = @"..\..\Images\Silhouette\Silhouette_" + i + ".png";
             }
@@ -431,22 +419,22 @@ namespace Integrated_Pokedex
             //Ist für das Wechseln des Hintergrundbildes da
             if (entEintrag.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\showEntry4.png",UriKind.Relative));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\showEntry4.png", UriKind.Relative));
             }
 
             if (entGewicht.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\weightDex.png",UriKind.Relative));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\weightDex.png", UriKind.Relative));
             }
 
             if (entGroesse.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\GroesseDex.png",UriKind.Relative));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\GroesseDex.png", UriKind.Relative));
             }
 
             if (entRuf.IsSelected)
             {
-                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\SoundDex.png",UriKind.Relative));
+                imgBackground.ImageSource = new BitmapImage(new Uri(@"..\..\Images\Background_Images\SoundDex.png", UriKind.Relative));
             }
         }
 
@@ -459,7 +447,7 @@ namespace Integrated_Pokedex
 
         private void soundButton_Click(object sender, RoutedEventArgs e)
         {
-            AudioFile.PlayPokemonSound(Daten[1],MainWindow.pokedexID);
+            AudioFile.PlayPokemonSound(Daten[1], MainWindow.pokedexID);
         }
     }
 }

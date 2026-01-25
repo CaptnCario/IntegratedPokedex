@@ -26,23 +26,23 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="29*"/>
             <!-- Spalte 0-->
-            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="200*"/>
             <!-- Spalte 1-->
-            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="32*"/>
             <!-- Spalte 2-->
             <ColumnDefinition Width="30*"/>
             <!-- Spalte 3-->
             <ColumnDefinition Width="209*"/>
             <!-- Spalte 4-->
-            
+
         </Grid.ColumnDefinitions>
 
         <Image Grid.Column="1" Margin="0,3,0,22" Source="/Images/Images/Dex_Anzeige.png" />
         <TextBlock Name="txtDexÜberschrift" TextAlignment="Center" FontFamily="Pixel LCD7" Foreground="White" FontWeight="Bold" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="14" Width="118" Margin="0,10,0,0" ToolTip="Das zeigt den Pokédex der aktuellen Region">[POKEDEX-NAME]</TextBlock>
 
-        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="130" x:Name="pkmnBild" Source="https://media.bisafans.de/6990e67//pokemon/artwork/162.png" Width="130" ToolTip="Das Pokemon was du gerade ausgewählt hast" Margin="56,37,0,0"/>
+        <Image Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="130" x:Name="pkmnBild" Source="https://media.bisafans.de/6990e67//pokemon/artwork/162.png" Width="130" ToolTip="Das Pokemon was du gerade ausgewählt hast" Margin="34,37,0,0"/>
 
         <StackPanel Grid.Column="4" Grid.ColumnSpan="4" Margin="0,3,0,0" Grid.Row="1" >
 
@@ -78,7 +78,7 @@
 
         <TextBlock Margin="5,0,0,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="Verdana" VerticalAlignment="Top" FontSize="13" Grid.RowSpan="2">Hier hast du die Möglichkeit, ein Pokemon zu Suchen, oder es anzusehen</TextBlock>
 
-        <Image Grid.Column="4" Grid.Row="4" x:Name="pkmnBall" Source="/Images/Icons/pokeball.png" Margin="80,2,-172,0" RenderTransformOrigin="0.5,0.5">
+        <Image Grid.Column="4" Grid.Row="4" x:Name="pkmnBall" Source="/Images/Icons/pokeball.png" Margin="24,2,-116,0" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
