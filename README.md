@@ -9,6 +9,7 @@
 
 <h4 align="center">This Pokedex involves every Pokemon from generation 1 up to generation 9</h4>
 
+<p align="center">
 ![screenshot](Logo.png)
-
+</p>
 
